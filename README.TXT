@@ -15,3 +15,9 @@ commandwords class is to confirm what the command words are if its not a command
 return false.the class room shows where all the exits are in each room.
 
 question 9. KeySet() method is part of the hashMap class. its used to get all the keys stored in the hashMap.
+
+question 17. No, you dont have to change the game classif you add a new command because now the parser.getCommandWords().showAll
+will be able to print the new command.
+
+question 18. Pros of static Methods: No need to create an object, it makes more sense because CommandWords is a utility class and because it has few objects
+cons: Less flexible and tighter coupling Any code that uses CommandWords now depend directly on the class.
