@@ -13,3 +13,5 @@ the command class makes the the return of the commands you put for class game.
 the parser class interprets the commands given in the terminal.
 commandwords class is to confirm what the command words are if its not a command word it will 
 return false.the class room shows where all the exits are in each room.
+
+question 9. KeySet() method is part of the hashMap class. its used to get all the keys stored in the hashMap.
