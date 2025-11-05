@@ -43,11 +43,18 @@ public class Game
         defuserSite = new Room("The room to defuse the bomb from exploding");
         
         // initialise room exits
-        outside.setExits(null, bombSite, baracades, hallway);
-        bombSite.setExits(null, null, null, outside);
-        baracades.setExits(null, outside, null, null);
-        hallway.setExits(outside, defuserSite, null, null);
-        defuserSite.setExits(null, null, null, hallway);
+        outside.setExit("north", null);
+        outside.setExit("east", bombSite);
+        outside.setExit("south", baracades);
+        outside.setExit("west", hallway);
+        
+        bombSite.setExit("west", outside);
+        baracades.setExit("east", outside);
+        
+        hallway.setExit("north", outside);
+        hallway.setExit("east", defuserSite);
+        
+        defuserSite.setExit("west", hallway);
 
         // start game outside
         currentRoom = outside;  
@@ -112,6 +119,9 @@ public class Game
         else if (commandWord.equals("look")) {
             look();
         }
+        else if (commandWord.equals("scan")) {
+            scan();
+        }
 
         return wantToQuit;
     }
@@ -143,7 +153,7 @@ public class Game
             System.out.println("Go where?");
             return;
         }
-
+     
         String direction = command.getSecondWord();
         Room nextRoom = currentRoom.getExit(direction);
         
@@ -178,5 +188,8 @@ public class Game
     private void look() {
         System.out.println(currentRoom.getLongDescription());
 
+    }
+    private void scan() {
+        System.out.println("You carefully scan the room for bombs or traps. Everything looks safe");
     }
 }
